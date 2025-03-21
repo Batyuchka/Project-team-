@@ -9,10 +9,18 @@ int Seance::getEndTime() const
 	return start_seance + f_duration;
 }
 
-//void Seance::moveToNextDay()
-//{
-//	static string days[] = { "Monday","Tuesday" ,"Wednesday","Thursday" ,"Friday" ,"Saturday"}
-//}
+void Seance::moveToNextDay()
+{
+	static string days[] = { "Monday","Tuesday" ,"Wednesday","Thursday" ,"Friday" ,"Saturday" };
+	for (int i = 0; i < 7; i++)
+	{
+		if (days[i] == day)
+		{
+			day = days[(i + 1) % 7];
+			break;
+		}
+	}
+}
 
 //void Seance::printOn() const
 //{
