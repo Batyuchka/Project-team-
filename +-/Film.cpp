@@ -5,7 +5,7 @@ Film::Film():f_title(" "), f_country(" "), f_duration(0.0)
 
 }
 
-Film::Film(string title, string country, double duration):f_title(title), f_country(country), f_duration(duration)
+Film::Film(string title, string country, int duration):f_title(title), f_country(country), f_duration(duration)
 {
 }
 
@@ -19,29 +19,34 @@ Film::~Film()
 
 string Film::getDurationInHours() const
 {
-	return string();
+
+	int hours = f_duration / 60;
+	int minutes = f_duration % 60;
+	string asString = to_string(hours) + ' ' + to_string(minutes);
+	return asString;
 }
 
-Film Film::operator-(int minutes) const
+Film Film::operator-(int minutes)
 {
-	return Film();
+	return Film(f_title, f_country, f_duration - minutes);
 }
 
 void Film::print() const
 {
+	cout <<'\n' << f_title << ' ' << f_country << ' ' << f_duration;
 }
 
 string Film::getTitle()
 {
-	return string();
+	return f_title;
 }
 
 string Film::getCountry()
 {
-	return string();
+	return f_country;
 }
 
 int Film::getDuration()
 {
-	return 0;
+	return f_duration;
 }
