@@ -13,7 +13,8 @@ public:
 	Film();
 	Film(const Film& F);
 	virtual ~Film();
-	Film operator-();
+    Film operator-(int minutes) const ;
+	virtual void print() const;
 
 
 
