@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-// Робота виконана Анастасією Гуль !!!!!
+//This was written by Anastasia Hul
 
 Cinema::Cinema(const std::string& filename) : filename(filename), sessionCount(0) {}
 

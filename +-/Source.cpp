@@ -6,7 +6,7 @@
 int main()
 {
 
-    // Робота виконана Анастасією Гуль !!!!!
+    //This was written by Anastasia Hul
     Cinema cinema("TextbyHULN.txt");
 
     cinema.loadSessionsFromFile();
