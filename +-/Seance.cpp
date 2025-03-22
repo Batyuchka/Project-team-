@@ -44,7 +44,7 @@ void Seance::moveToNextDay()
 void Seance::printOn() const
 {
 	cout << "\"" << f_title << "\" (" << f_country << ") - " << f_duration
-		<< " min, " << day << ", початок: " << start_seance << "\n";
+		<< " min, " << day << ", Start: " << start_seance << "\n";
 }
 
 bool Seance::operator<(const Seance& S) const
