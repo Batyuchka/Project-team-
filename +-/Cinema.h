@@ -6,7 +6,7 @@
 
 const int MAX_SESSIONS = 100;
 
-struct Session 
+struct Session
 {
     std::string movie;
     std::string day;
