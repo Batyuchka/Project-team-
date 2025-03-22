@@ -5,7 +5,7 @@ Film::Film():f_title(" "), f_country(" "), f_duration(0.0)
 
 }
 
-Film::Film(string title, string country, double duration):f_title(title), f_country(country), f_duration(duration)
+Film::Film(string title, string country, int duration):f_title(title), f_country(country), f_duration(duration)
 {
 }
 
