@@ -29,6 +29,25 @@ int main()
     }
 
 
+    Seance s1("Interstellar", "USA", 169, "Monday", "19:30");
+    Seance s2("Inception", "USA", 148, "Monday", "21:00");
+    Seance s3("Mavka. The Forest Song", "Ukraine", 99, "Wednesday", "17:45");
+
+
+    cout << "Initial sessions:\n";
+    s1.printOn();
+    s2.printOn();
+    s3.printOn();
+
+
+    cout << "\nReducing 'Interstellar' duration by 20 minutes:\n";
+    Film shorterFilm = s1 - 20;
+
+
+    s1 = Seance(shorterFilm.getTitle(), shorterFilm.getCountry(), shorterFilm.getDuration(), s1.getDay(), s1.getStartSeance());
+    s1.printOn();
+
+
 
 	return 0;
 }
