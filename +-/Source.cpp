@@ -47,7 +47,13 @@ int main()
     s1 = Seance(shorterFilm.getTitle(), shorterFilm.getCountry(), shorterFilm.getDuration(), s1.getDay(), s1.getStartSeance());
     s1.printOn();
 
-
+    cout << "\nComparing sessions:\n";
+    if (s1 < s2) {
+        cout << "'Interstellar' ends earlier than 'Inception'\n";
+    }
+    else {
+        cout << "'Inception' ends earlier than 'Interstellar'\n";
+    }
 
 	return 0;
 }
