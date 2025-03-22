@@ -7,11 +7,13 @@ Seance::Seance(string t, string c, double d, string da, string st)
 	: Film(t,c,d), day(da) , start_seance(st)
 {}
 
-string Seance::getDay() const {
+string Seance::getDay() const
+{
 	return day;
 }
 
-string Seance::getStartSeance() const {
+string Seance::getStartSeance() const
+{
 	return start_seance;
 }
 
