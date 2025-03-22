@@ -11,6 +11,8 @@ private:
 
 public:
 	Seance(string t, string c, double d, string da, string st);
+	string getDay() const;
+	string getStartSeance() const;
 	string getEndTime();
 	void moveToNextDay();
 	void printOn() const;

@@ -7,6 +7,14 @@ Seance::Seance(string t, string c, double d, string da, string st)
 	: Film(t,c,d), day(da) , start_seance(st)
 {}
 
+string Seance::getDay() const {
+	return day;
+}
+
+string Seance::getStartSeance() const {
+	return start_seance;
+}
+
 string Seance::getEndTime()
 {
 	int hours = (start_seance[0] - '0') * 10 + (start_seance[1] - '0');
