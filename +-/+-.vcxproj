@@ -24,6 +24,7 @@
     <ProjectGuid>{75cb7a98-8cae-488b-ab8f-60177f7499e3}</ProjectGuid>
     <RootNamespace>My</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Film v-5</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
