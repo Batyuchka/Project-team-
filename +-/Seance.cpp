@@ -32,9 +32,10 @@ void Seance::moveToNextDay()
 	}
 }
 
-//void Seance::printOn() const
-//{
-//}
+void Seance::printOn() const
+{
+
+}
 
 //bool Seance::operator<(const Seance& S) const
 //{
