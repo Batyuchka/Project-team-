@@ -25,7 +25,6 @@ string Seance::getEndTime()
 	minutes += static_cast<int>(f_duration);
 	hours += minutes / 60;
 	minutes %= 60;
-
 	return (hours < 10 ? "0" : "") + to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
 }
 
