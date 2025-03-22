@@ -6,11 +6,12 @@ class Seance : public Film
 {
 private:
 	string day;
-	double start_seance;
+	string start_seance;
+	 
 
 public:
-	Seance(string t, string c, double d, string da, double st);
-	int getEndTime() const;
+	Seance(string t, string c, double d, string da, string st);
+	string getEndTime();
 	void moveToNextDay();
 	void printOn() const;
 
