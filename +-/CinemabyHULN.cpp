@@ -1,4 +1,4 @@
-#include "Cinema.h"
+#include "CinemabyHULN.h"
 #include <iostream>
 #include <fstream>
 

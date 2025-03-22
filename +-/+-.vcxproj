@@ -128,19 +128,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Cinema.cpp" />
+    <ClCompile Include="CinemabyHULN.cpp" />
     <ClCompile Include="Film.cpp" />
     <ClCompile Include="Seance.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cinema.h" />
+    <ClInclude Include="CinemabyHULN.h" />
     <ClInclude Include="Film.h" />
     <ClInclude Include="Seance.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Text.txt" />
+    <Text Include="TextbyHULN.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

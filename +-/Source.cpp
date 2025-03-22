@@ -1,5 +1,5 @@
 #include"../+-/Film.h"
-#include "../+-/Cinema.h"
+#include "../+-/CinemabyHULN.h"
 #include"../+-/Seance.h"
 #include <iostream>
 
@@ -7,7 +7,7 @@ int main()
 {
 
     // Робота виконана Анастасією Гуль !!!!!
-    Cinema cinema("Text.txt");
+    Cinema cinema("TextbyHULN.txt");
 
     cinema.loadSessionsFromFile();
     cinema.addSession("Interstellar", "Monday", 19, 30, 169);
