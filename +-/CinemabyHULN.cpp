@@ -2,54 +2,70 @@
 #include <iostream>
 #include <fstream>
 
+
 //This was written by Anastasia Hul
+using namespace std;
 
-Cinema::Cinema(const std::string& filename) : filename(filename), sessionCount(0) {}
-
-void Cinema::addSession(const std::string& movie, const std::string& day, int startHour, int startMinute, int duration) {
-    if (sessionCount < MAX_SESSIONS) {
-        schedule[sessionCount++] = { movie, day, startHour, startMinute, duration };
+Days Fromstring(string S)
+{ 
+    string Dayss[] = { "Monday","Tuesday","Wednesday", "Thursday","Friday","Saturday","Sunday" };
+    for (int i = 0; i < 7; ++i)
+    {
+        if (S == Dayss[i])
+        {
+            return static_cast <Days> (i);
+        }
     }
-    else {
-        std::cerr << "Maximum session reached!\n";
-    }
+    return Days::Fridey;
 }
 
-void Cinema::loadSessionsFromFile() {
-    std::ifstream file(filename);
+void Cinema::ReadFromFile(string fileName)
+{
+    ifstream file(fileName);
     if (!file) {
-        std::cerr << "Error opening folder : " << filename << std::endl;
+        cerr << "Error opening folder : " << fileName << endl;
         return;
     }
 
-    std::string movie, day;
+   string film, country, day;
     int startHour, startMinute, duration;
-    while (file >> movie >> day >> startHour >> startMinute >> duration) {
-        addSession(movie, day, startHour, startMinute, duration);
+    while (file >> film >> country >> duration >> day >> startHour >> startMinute)
+    {
+        Seance S(film, country, duration, Fromstring(day), Duration(startHour, startMinute));
+        addSeance(S);
     }
 }
 
-Session Cinema::getLatestSession(const std::string& day) const {
-    Session latest = { "", "", 0, 0, 0 };
-    int latestEndTime = -1;
+Cinema::Cinema()
+{}
 
-    for (int i = 0; i < sessionCount; i++) {
-        if (schedule[i].day == day) {
-            int endTime = schedule[i].startHour * 60 + schedule[i].startMinute + schedule[i].duration;
-            if (endTime > latestEndTime) {
-                latest = schedule[i];
-                latestEndTime = endTime;
-            }
+void Cinema::addSeance(const Seance& S)
+{
+    schedule.push_back(S);
+}
+
+Seance Cinema::getLastSeance(Days day)
+{
+    list<Seance> Film_day;
+    for (const Seance& S : schedule)
+    {
+        if (S.getDay() == day)
+        {
+            Film_day.push_back(S);
         }
     }
-
-    return latest;
+    if (Film_day.empty())
+    {
+        throw "No Seance per specified day ";
+    }
+    Film_day.sort();
+    return Film_day.back();
 }
 
-void Cinema::printSessions() const {
-    for (int i = 0; i < sessionCount; i++) {
-        std::cout << schedule[i].movie << " | " << schedule[i].day << " | "
-            << schedule[i].startHour << ":" << (schedule[i].startMinute < 10 ? "0" : "") << schedule[i].startMinute
-            << " | " << schedule[i].duration << " minute.\n";
+void Cinema::Print()
+{
+    for (const Seance& S : schedule)
+    {
+        S.print();
     }
 }

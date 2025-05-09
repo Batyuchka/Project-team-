@@ -6,39 +6,39 @@
 int main()
 {
     
-    //This was written by Anastasia Hul
-    Cinema cinema("TextbyHULN.txt");
+    //This was written by Anastasia Hul 
+    Cinema cinema;
+    cinema.ReadFromFile("TextbyHULN.txt");
 
-    cinema.loadSessionsFromFile();
-    cinema.addSession("Interstellar", "Monday", 19, 30, 169);
-    cinema.addSession("Inception", "Monday", 21, 00, 148);
-    cinema.addSession("Avatar", "Tuesday", 18, 00, 162);
+    cinema.addSeance(Seance ("Interstellar","Ukraine", 169, Days::Monday, Duration(19,30)));
+    cinema.addSeance(Seance ("Inception","Poland", 148, Days::Sunday, Duration(18,45)));
+    cinema.addSeance(Seance ("Avatar","Ukraine", 162, Days::Monday,Duration(18,30)));
 
-    std::cout << "Session schebule:\n";
-    cinema.printSessions();
+    std::cout << "Seance schebule:\n";
+    cinema.Print();
 
-    std::string searchDay = "Monday";
-    Session latest = cinema.getLatestSession(searchDay);
-    if (!latest.movie.empty()) {
-        std::cout << "\nLater session in " << searchDay << ": "
-            << latest.movie << " in " << latest.startHour << ":"
-            << (latest.startMinute < 10 ? "0" : "") << latest.startMinute << std::endl;
+    Days searchDay = Days::Monday;
+    try
+    {
+        Seance latest = cinema.getLastSeance(searchDay);
+        cout << "\nLater seance in " << to_string(searchDay) << ": ";
+        latest.print();
     }
-    else {
-        std::cout << "\nNo seassion on this day.\n";
+    catch (const char* e)
+    {
+        cout << e; 
     }
-    
 
-
+   
     Seance s1("Interstellar", "USA", 169, Days::Monday, Duration(19,30));
     Seance s2("Inception", "USA", 148, Days::Monday, Duration(20, 45));
     Seance s3("Mavka. The Forest Song", "Ukraine", 99, Days::Wednesday, Duration(18,20));
 
 
     cout << "Initial sessions:\n";
-    s1.printOn();
-    s2.printOn();
-    s3.printOn();
+    s1.print();
+    s2.print();
+    s3.print();
 
 
     cout << "\nReducing 'Interstellar' duration by 20 minutes:\n";
@@ -46,7 +46,7 @@ int main()
 
 
     s1 = Seance(shorterFilm.getTitle(), shorterFilm.getCountry(), shorterFilm.getDuration(), s1.getDay(), s1.getStartSeance());
-    s1.printOn();
+    s1.print();
 
     cout << "\nComparing sessions:\n";
     if (s1 < s2) {

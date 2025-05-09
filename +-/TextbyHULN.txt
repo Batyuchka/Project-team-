@@ -1,3 +1,3 @@
-Titanic Monday 17 00 195
-Matrix Monday 20 30 136
-Joker Tuesday 19 15 122
+Titanic USA 195 Monday 17 10
+Matrix Ukraine 136 Monday 20 30
+Joker Italy 122 Tuesday 19 15

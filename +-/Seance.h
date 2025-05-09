@@ -21,8 +21,7 @@ public:
 	Duration getStartSeance() const;
 	Duration getEndTime() const; 
 	void moveToNextDay();
-	void printOn() const;
-
+	void print() const override;
 	bool operator<(const Seance& S) const;
 
 };

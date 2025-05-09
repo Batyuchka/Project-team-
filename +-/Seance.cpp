@@ -38,7 +38,7 @@ void Seance::moveToNextDay()
 	}
 }
 
-void Seance::printOn() const
+void Seance::print() const
 {
 	cout << "\"" << f_title << "\" (" << f_country << ") - " << f_duration
 		<< " min, " << to_string(day) << ", Start: " << start_seance.hours <<  ": " << start_seance.minutes << "\n";

@@ -1,32 +1,24 @@
 #pragma once
-
 #include <string>
+#include "Seance.h"
+#include "Film.h"
+#include <list>
+using namespace std;
 
 // This was written by Anastasia Hul
-
-const int MAX_SESSIONS = 100;
-
-struct Session
-{
-    std::string movie;
-    std::string day;
-    int startHour;
-    int startMinute;
-    int duration;
-};
 
 class Cinema 
 {
 public:
-    Cinema(const std::string& filename);
-    void addSession(const std::string& movie, const std::string& day, int startHour, int startMinute, int duration);
-    void loadSessionsFromFile();
-    Session getLatestSession(const std::string& day) const;
-    void printSessions() const;
+    Cinema();
+    void addSeance(const Seance& S);
+    void ReadFromFile(string fileName);
+    Seance getLastSeance (Days day);
+    void Print();
 
 private:
-    std::string filename;
-    Session schedule[MAX_SESSIONS];
-    int sessionCount;
+
+    list< Seance> schedule; 
+   
 };
 
