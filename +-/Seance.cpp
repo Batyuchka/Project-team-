@@ -49,16 +49,11 @@ void Seance::printOn() const
 
 bool Seance::operator<(const Seance& S) const
 {
+	Duration thisDuration = getDurationAsNumber();
+	Duration otherDuration = S.getDurationAsNumber();
 
-	int thisDuration = getDurationAsNumber();
-	int thisHours = thisDuration / 100;
-	int thisMinutes = thisDuration % 100;
+	int thisTotalMinutes = thisDuration.hours * 60 + thisDuration.minutes;
+	int otherTotalMinutes = otherDuration.hours * 60 + otherDuration.minutes;
 
-	// Отримуємо тривалість у вигляді числа для іншого сеансу
-	int otherDuration = S.getDurationAsNumber();
-	int otherHours = otherDuration / 100;
-	int otherMinutes = otherDuration % 100;
-
-	// Порівнюємо загальну кількість хвилин
-	return (thisHours * 60 + thisMinutes) < (otherHours * 60 + otherMinutes);
+	return thisTotalMinutes < otherTotalMinutes;
 }

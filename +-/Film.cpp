@@ -36,7 +36,9 @@ Film Film::operator-(int minutes)
 
 void Film::print() const
 {
-    cout << '\n' << f_title << " | " << f_country << " | " << f_duration << " min";
+    Duration d = getDurationAsNumber();
+    cout << '"' << f_title << "\" (" << f_country << ") - "
+        << d.hours << " h. " << d.minutes << " m.";
 }
 
 string Film::getTitle() const
