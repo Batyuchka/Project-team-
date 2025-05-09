@@ -2,7 +2,7 @@
 
 #include <string>
 
-// Робота виконана Анастасією Гуль !!!!!
+// This was written by Anastasia Hul
 
 const int MAX_SESSIONS = 100;
 
