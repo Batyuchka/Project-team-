@@ -3,57 +3,78 @@
 #include <string>
 
 
-Seance::Seance(string t, string c, double d, string da, string st)
+Seance::Seance(string t, string c, int d, Days da, Duration st)
 	: Film(t,c,d), day(da) , start_seance(st)
 {}
 
-string Seance::getDay() const
+Days Seance::getDay() const  
 {
 	return day;
 }
 
-string Seance::getStartSeance() const
+Duration Seance::getStartSeance() const
 {
 	return start_seance;
 }
 
-string Seance::getEndTime()
+Duration Seance::getEndTime() const
 {
-	int hours = (start_seance[0] - '0') * 10 + (start_seance[1] - '0');
-	int minutes = (start_seance[3] - '0') * 10 + (start_seance[4] - '0');
-
-	minutes += static_cast<int>(f_duration);
+	int hours = start_seance.hours + getDurationAsNumber().hours;
+	int minutes = start_seance.minutes + getDurationAsNumber().minutes;
 	hours += minutes / 60;
 	minutes %= 60;
-	return (hours < 10 ? "0" : "") + to_string(hours) + ":" + (minutes < 10 ? "0" : "") + to_string(minutes);
+	return Duration(hours , minutes);
 }
 
 void Seance::moveToNextDay()
 {
-	string days[] = { "Monday","Tuesday" ,"Wednesday","Thursday" ,"Friday" ,"Saturday" ,"Sunday"};
-	for (int i = 0; i < 7; i++)
+	if (day == Days::Sunday)
 	{
-		if (days[i] == day)
-		{
-			day = days[(i + 1) % 7];
-			break;
-		}
+		day = Days::Monday;
+	}
+	else
+	{
+		day = static_cast <Days> ( static_cast< int> (day) + 1); 
 	}
 }
 
 void Seance::printOn() const
 {
 	cout << "\"" << f_title << "\" (" << f_country << ") - " << f_duration
-		<< " min, " << day << ", Start: " << start_seance << "\n";
+		<< " min, " << to_string(day) << ", Start: " << start_seance.hours <<  ": " << start_seance.minutes << "\n";
 }
 
 bool Seance::operator<(const Seance& S) const
 {
-	Duration thisDuration = getDurationAsNumber();
-	Duration otherDuration = S.getDurationAsNumber();
+	Duration thisEndTime = getEndTime(); 
+	Duration otherEndTime = S.getEndTime();
+	if (thisEndTime.hours == otherEndTime.hours)
+	return thisEndTime.minutes < otherEndTime.minutes;
+	return thisEndTime.hours < otherEndTime.hours;
+}
 
-	int thisTotalMinutes = thisDuration.hours * 60 + thisDuration.minutes;
-	int otherTotalMinutes = otherDuration.hours * 60 + otherDuration.minutes;
+string to_string(Days day)
+{
+	string res = "";
 
-	return thisTotalMinutes < otherTotalMinutes;
+	switch (day)
+	{
+	case Monday: res = "Monday";
+		break;
+	case Tuesday: res = "Tuesday";
+		break;
+	case Wednesday: res = "Wednesday";
+		break;
+	case Thursday: res = "Thursday";
+		break;
+	case Fridey: res = "Fridey";
+		break;
+	case Saturday: res = "Saturday";
+		break;
+	case Sunday: res = "Sunday";
+		break;
+	default:
+		break;
+	}
+	return res;
 }

@@ -3,21 +3,23 @@
 
 enum Days
 {
-	Monday, //.... і далі, це включити в клас сеанс
+	Monday, Tuesday, Wednesday, Thursday, Fridey, Saturday, Sunday
 };
+
+string to_string(Days day) ;
 
 class Seance : public Film
 {
 private:
 	Days day;
-	string start_seance;
+	Duration start_seance;
 	 
 
 public:
-	Seance(string t, string c, double d, string da, string st); // Інші конструктори
-	string getDay() const;
-	string getStartSeance() const;
-	string getEndTime();
+	Seance(string t, string c, int d, Days da, Duration st);
+	Days getDay() const;
+	Duration getStartSeance() const;
+	Duration getEndTime() const; 
 	void moveToNextDay();
 	void printOn() const;
 

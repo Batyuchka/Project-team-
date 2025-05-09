@@ -5,7 +5,7 @@
 
 int main()
 {
-
+    
     //This was written by Anastasia Hul
     Cinema cinema("TextbyHULN.txt");
 
@@ -27,11 +27,12 @@ int main()
     else {
         std::cout << "\nNo seassion on this day.\n";
     }
+    
 
 
-    Seance s1("Interstellar", "USA", 169, "Monday", "19:30");
-    Seance s2("Inception", "USA", 148, "Monday", "21:00");
-    Seance s3("Mavka. The Forest Song", "Ukraine", 99, "Wednesday", "17:45");
+    Seance s1("Interstellar", "USA", 169, Days::Monday, Duration(19,30));
+    Seance s2("Inception", "USA", 148, Days::Monday, Duration(20, 45));
+    Seance s3("Mavka. The Forest Song", "Ukraine", 99, Days::Wednesday, Duration(18,20));
 
 
     cout << "Initial sessions:\n";
@@ -54,6 +55,6 @@ int main()
     else {
         cout << "'Inception' ends earlier than 'Interstellar'\n";
     }
-
+    
 	return 0;
 }
