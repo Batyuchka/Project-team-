@@ -1,7 +1,15 @@
 #pragma once
 #include <iostream>
-#include<string>
+#include <string>
 using namespace std;
+
+struct Duration
+{
+	int hours;
+	int minutes;
+
+	Duration(int h = 0, int m = 0) : hours(h), minutes(m) {}
+};
 
 class Film
 {
@@ -15,17 +23,11 @@ public:
 	Film(const Film& F);
 	virtual ~Film();
 
-	string getDurationInHours()const;
-    Film operator-(int minutes);
+	Duration getDurationAsNumber() const;
+	Film operator-(int minutes);
 	virtual void print() const;
 
-	string getTitle();
-	string getCountry();
-	int getDuration();
-
-
-
-
-
+	string getTitle() const;
+	string getCountry() const;
+	int getDuration() const;
 };
-

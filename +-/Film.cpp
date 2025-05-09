@@ -1,15 +1,17 @@
 #include "Film.h"
 
-Film::Film():f_title(" "), f_country(" "), f_duration(0.0)
-{
-
-}
-
-Film::Film(string title, string country, int duration):f_title(title), f_country(country), f_duration(duration)
+Film::Film() : f_title(" "), f_country(" "), f_duration(0)
 {
 }
 
-Film::Film(const Film& F):f_title(F.f_title), f_country(F.f_country), f_duration(F.f_duration)
+Film::Film(string title, string country, int duration)
+    : f_title(title), f_country(country), f_duration(duration)
+{
+    if (duration < 0) f_duration = 0;
+}
+
+Film::Film(const Film& F)
+    : f_title(F.f_title), f_country(F.f_country), f_duration(F.f_duration)
 {
 }
 
@@ -17,36 +19,37 @@ Film::~Film()
 {
 }
 
-string Film::getDurationInHours() const
+Duration Film::getDurationAsNumber() const
 {
-
-	int hours = f_duration / 60;
-	int minutes = f_duration % 60;
-	string asString = to_string(hours) + ' ' + to_string(minutes);
-	return asString;
+    int hours = f_duration / 60;
+    int minutes = f_duration % 60;
+    return Duration(hours, minutes);
 }
 
 Film Film::operator-(int minutes)
 {
-	return Film(f_title, f_country, f_duration - minutes);
+    int newDuration = f_duration - minutes;
+    if (newDuration < 0)
+        newDuration = 0;
+    return Film(f_title, f_country, newDuration);
 }
 
 void Film::print() const
 {
-	cout <<'\n' << f_title << ' ' << f_country << ' ' << f_duration;
+    cout << '\n' << f_title << " | " << f_country << " | " << f_duration << " min";
 }
 
-string Film::getTitle()
+string Film::getTitle() const
 {
-	return f_title;
+    return f_title;
 }
 
-string Film::getCountry()
+string Film::getCountry() const
 {
-	return f_country;
+    return f_country;
 }
 
-int Film::getDuration()
+int Film::getDuration() const
 {
-	return f_duration;
+    return f_duration;
 }
